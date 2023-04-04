@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replys">
+	<select id="findLatest" resultType="reply">
+		SELECT * FROM REPLYS WHERE MOIM_ID=#{moimId} ORDER BY WRITED ASC
+	</select>
+
+	<update id = "creat" parameterType = "hashmap">
+		INSERT INTO REPLYS(ID, MOIM_ID, WRITER,COMMENT) 
+		VALUES(REPLYS_SEQ.NEXTVAL, #{moimId}, #{writer}, #{comment})
+	</update>
+</mapper>
