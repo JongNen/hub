@@ -23,8 +23,9 @@
 					<h2 style="margin: 0.2em 0em;">${moim.event }</h2>
 					<div style="justify-content: space-between;" class="block-row">
 						<div>
-						 	<a href="/moim/search"><span>전체</span></a> <span>&gt;</span>
-						 	<a href="/moim/search?cate=${moim.cate }"><span>${moim.cate }</span></a> <span>|</span>
+							<a href="/moim/search"><span>전체</span></a> <span>&gt;</span> <a
+								href="/moim/search?cate=${moim.cate }"><span>${moim.cate }</span></a>
+							<span>|</span>
 							<c:choose>
 								<c:when test="${moim.type eq 'public' }">
 									<span class="">공개</span>
@@ -33,11 +34,10 @@
 									<span class="">비공개</span>
 								</c:otherwise>
 							</c:choose>
-							<span>|</span> <small>
-								<fmt:formatDate value="${moim.beginDate }"
-									pattern="yyyy.MM.dd (E)" /> <span>|</span> <fmt:formatDate
-									value="${moim.beginDate }" pattern="HH:mm" /> ~ <fmt:formatDate
-									value="${moim.endDate }" pattern="HH:mm" />
+							<span>|</span> <small> <fmt:formatDate
+									value="${moim.beginDate }" pattern="yyyy.MM.dd (E)" /> <span>|</span>
+								<fmt:formatDate value="${moim.beginDate }" pattern="HH:mm" /> ~
+								<fmt:formatDate value="${moim.endDate }" pattern="HH:mm" />
 							</small>
 						</div>
 						<div>
@@ -70,8 +70,8 @@
 									<a class="moim-join-bt">참가신청불가</a>
 								</c:when>
 								<c:when test="${status eq -1 }">
-									<a class="moim-join-bt" href="/user/login">참가
-										신청을 하기위해서는 로그인이 필요합니다.</a>
+									<a class="moim-join-bt" href="/user/login">참가 신청을 하기위해서는
+										로그인이 필요합니다.</a>
 								</c:when>
 								<c:when test="${status eq 0 }">
 									<a class="moim-join-bt"
@@ -88,10 +88,32 @@
 					</div>
 				</div>
 			</div>
+			<div class="moim-replys">
+				<c:choose>
+					<c:when test="${empty replys }">
+						<div>등록된 댓글이 없습니다.</div>
+					</c:when>
+					<c:otherwise>
+						<table>
+							<tr>
+								<th>작성자</th>
+								<th>내용</th>
+								<th>작성일</th>
+							</tr>
+							<c:forEach var="r" items="${replys }">
+								<tr>
+									<td>${r.writer }</td>
+									<td>${r.ment }</td>
+									<td><fmt:formatDate value="${r.writed }" pattern="yyyy.MM.dd"/></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:otherwise>
+				</c:choose>
+
+			</div>
 		</div>
 
 	</div>
-
-	
 </body>
 </html>

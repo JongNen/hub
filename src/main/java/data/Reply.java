@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Reply {
 	int id;
 	String moimId;
-	String writter;
+	String writer;
 	String ment;
 	Date writed;
 	public int getId() {
@@ -20,12 +20,15 @@ public class Reply {
 	public void setMoimId(String moimId) {
 		this.moimId = moimId;
 	}
-	public String getWritter() {
-		return writter;
+	
+	public String getWriter() {
+		return writer;
 	}
-	public void setWritter(String writter) {
-		this.writter = writter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
+
+	
 	public String getMent() {
 		return ment;
 	}
